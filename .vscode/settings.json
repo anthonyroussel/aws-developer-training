@@ -19,5 +19,12 @@
     "editor.codeActionsOnSave": {
       "source.fixAll": true
     }
+  },
+  "[terraform]": {
+    "editor.defaultFormatter": "hashicorp.terraform",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true
+    }
   }
 }
