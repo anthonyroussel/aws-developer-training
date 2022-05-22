@@ -53,3 +53,8 @@ output "load_balancer_dns_name" {
   value       = aws_lb.load_balancer.dns_name
   description = "Load balancer DNS name"
 }
+
+output "load_balancer_zone_id" {
+  value       = aws_lb.load_balancer.zone_id
+  description = "Load balancer Zone ID"
+}
