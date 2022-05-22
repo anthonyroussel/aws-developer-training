@@ -1,7 +1,7 @@
 resource "aws_instance" "web" {
-  ami             = data.aws_ami.amazon_linux.id
-  instance_type   = "t3.micro"
-  user_data       = <<EOF
+  ami           = data.aws_ami.amazon_linux.id
+  instance_type = "t3.micro"
+  user_data     = <<EOF
     #!/usr/bin/env bash
     sudo yum update -y
     sudo amazon-linux-extras install nginx1 -y
@@ -20,6 +20,6 @@ resource "aws_instance" "web" {
 }
 
 output "instance_ip" {
-  value       = "${aws_instance.web.public_ip}"
+  value       = aws_instance.web.public_ip
   description = "Instance Public IP"
 }
