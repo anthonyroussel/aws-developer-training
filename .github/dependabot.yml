@@ -12,6 +12,17 @@ updates:
       - "dependencies"
 
   - package-ecosystem: terraform
+    directory: /load_balancers
+    schedule:
+      interval: daily
+    assignees:
+      - anthonyroussel
+    reviewers:
+      - anthonyroussel
+    labels:
+      - "dependencies"
+
+  - package-ecosystem: terraform
     directory: /route53
     schedule:
       interval: daily
