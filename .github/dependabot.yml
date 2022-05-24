@@ -1,0 +1,23 @@
+version: 2
+updates:
+  - package-ecosystem: terraform
+    directory: /cloudfront
+    schedule:
+      interval: daily
+    assignees:
+      - anthonyroussel
+    reviewers:
+      - anthonyroussel
+    labels:
+      - "dependencies"
+
+  - package-ecosystem: terraform
+    directory: /route53
+    schedule:
+      interval: daily
+    assignees:
+      - anthonyroussel
+    reviewers:
+      - anthonyroussel
+    labels:
+      - "dependencies"
