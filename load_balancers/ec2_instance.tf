@@ -1,4 +1,6 @@
 resource "aws_instance" "web" {
+  count = var.number_of_instances
+
   ami           = data.aws_ami.amazon_linux.id
   instance_type = "t3.micro"
 
@@ -12,8 +14,9 @@ resource "aws_instance" "web" {
     echo "<h1>Hello World from $(hostname -f) in AZ $EC2_AVAILABILITY_ZONE</h1>" > /usr/share/nginx/html/index.html
   EOF
 
-  vpc_security_group_ids      = [aws_security_group.udemy_web.id]
-  subnet_id                   = aws_subnet.private.id
+  vpc_security_group_ids = [aws_security_group.web.id]
+
+  subnet_id                   = aws_subnet.private["primary"].id
   associate_public_ip_address = false
 
   # NAT Gateway should be created first to install nginx
@@ -22,6 +25,6 @@ resource "aws_instance" "web" {
   ]
 
   tags = {
-    Name = "Udemy LBL Web instance"
+    Name = "Udemy LBL Web instance ${count.index}"
   }
 }

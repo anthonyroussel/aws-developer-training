@@ -16,12 +16,16 @@ resource "aws_elb" "classic" {
     target              = "HTTP:80/"
   }
 
-  instances                   = [aws_instance.web.id]
+  instances                   = [for instance in aws_instance.web : instance.id]
   cross_zone_load_balancing   = true
   connection_draining         = true
   connection_draining_timeout = 300
 
-  subnets         = [aws_subnet.public.id]
+  subnets = [
+    aws_subnet.public["primary"].id,
+    aws_subnet.public["secondary"].id,
+  ]
+
   security_groups = [aws_security_group.classic.id]
 
   tags = {

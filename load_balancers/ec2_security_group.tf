@@ -1,5 +1,5 @@
-resource "aws_security_group" "udemy_web" {
-  name   = "udemy-lbl-web-instance"
+resource "aws_security_group" "web" {
+  name   = "web"
   vpc_id = aws_vpc.vpc.id
 
   ingress {

@@ -1,23 +1,33 @@
 resource "aws_subnet" "private" {
-  availability_zone = data.aws_availability_zones.available.names[0]
-  cidr_block        = "10.0.10.0/24"
-  vpc_id            = aws_vpc.vpc.id
+  for_each = var.private_subnets
+
+  availability_zone_id = each.value["az"]
+  cidr_block           = each.value["cidr"]
+  vpc_id               = aws_vpc.vpc.id
 
   tags = {
-    Name = "Udemy LBL Private"
+    Name = "Udemy LBL Private ${each.value["az"]}"
   }
 }
 
 resource "aws_route_table" "private" {
+  for_each = var.private_subnets
+
   vpc_id = aws_vpc.vpc.id
 
   route {
     cidr_block     = "0.0.0.0/0"
     nat_gateway_id = aws_nat_gateway.public.id
   }
+
+  tags = {
+    Name = "Udemy LBL Private ${each.value["az"]}"
+  }
 }
 
 resource "aws_route_table_association" "private" {
-  subnet_id      = aws_subnet.private.id
-  route_table_id = aws_route_table.private.id
+  for_each = var.private_subnets
+
+  subnet_id      = aws_subnet.private[each.key].id
+  route_table_id = aws_route_table.private[each.key].id
 }

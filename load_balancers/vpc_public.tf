@@ -1,25 +1,35 @@
 resource "aws_subnet" "public" {
-  availability_zone = data.aws_availability_zones.available.names[0]
-  cidr_block        = "10.0.20.0/24"
-  vpc_id            = aws_vpc.vpc.id
+  for_each = var.public_subnets
+
+  availability_zone_id = each.value["az"]
+  cidr_block           = each.value["cidr"]
+  vpc_id               = aws_vpc.vpc.id
 
   tags = {
-    Name = "Udemy LBL Public"
+    Name = "Udemy LBL Public ${each.value["az"]}"
   }
 }
 
 resource "aws_route_table" "public" {
+  for_each = var.public_subnets
+
   vpc_id = aws_vpc.vpc.id
 
   route {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.nat_gateway.id
   }
+
+  tags = {
+    Name = "Udemy LBL Public ${each.value["az"]}"
+  }
 }
 
 resource "aws_route_table_association" "public" {
-  subnet_id      = aws_subnet.public.id
-  route_table_id = aws_route_table.public.id
+  for_each = var.public_subnets
+
+  subnet_id      = aws_subnet.public[each.key].id
+  route_table_id = aws_route_table.public[each.key].id
 }
 
 resource "aws_eip" "nat_gateway" {
@@ -28,7 +38,7 @@ resource "aws_eip" "nat_gateway" {
 
 resource "aws_nat_gateway" "public" {
   allocation_id = aws_eip.nat_gateway.id
-  subnet_id     = aws_subnet.public.id
+  subnet_id     = aws_subnet.public["primary"].id
 
   tags = {
     Name = "Udemy LBL NAT Gateway"
