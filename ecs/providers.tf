@@ -3,7 +3,7 @@ provider "aws" {
 
   default_tags {
     tags = {
-      Project = "Udemy - Load Balancers"
+      Project = "Udemy ECS"
     }
   }
 }

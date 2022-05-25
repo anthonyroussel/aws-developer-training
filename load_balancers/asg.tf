@@ -10,7 +10,7 @@ resource "aws_launch_template" "web" {
 resource "aws_autoscaling_group" "web" {
   name = "DemoASG"
 
-  vpc_zone_identifier = [for subnet in aws_subnet.private : subnet.id]
+  vpc_zone_identifier = module.vpc.private_subnet_ids
 
   desired_capacity = 3
   max_size         = 3
@@ -25,6 +25,4 @@ resource "aws_autoscaling_group" "web" {
   }
 
   target_group_arns = [aws_lb_target_group.application_http_default.arn]
-
-  depends_on = [aws_nat_gateway.public]
 }

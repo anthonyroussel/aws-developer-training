@@ -6,7 +6,7 @@ resource "aws_subnet" "public" {
   vpc_id               = aws_vpc.vpc.id
 
   tags = {
-    Name = "Udemy LBL Public ${each.value["az"]}"
+    Name = "public-${each.value["az"]}"
   }
 }
 
@@ -21,7 +21,7 @@ resource "aws_route_table" "public" {
   }
 
   tags = {
-    Name = "Udemy LBL Public ${each.value["az"]}"
+    Name = "public-${each.value["az"]}"
   }
 }
 
@@ -39,12 +39,12 @@ resource "aws_eip" "nat_gateway" {
 resource "aws_nat_gateway" "public" {
   allocation_id = aws_eip.nat_gateway.id
   subnet_id     = aws_subnet.public["primary"].id
-
-  tags = {
-    Name = "Udemy LBL NAT Gateway"
-  }
 }
 
 output "nat_gateway_ip" {
   value = aws_eip.nat_gateway.public_ip
+}
+
+output "public_subnet_ids" {
+  value = [for subnet in aws_subnet.public : subnet.id]
 }

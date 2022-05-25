@@ -1,6 +1,6 @@
 resource "aws_security_group" "web" {
   name   = "web"
-  vpc_id = aws_vpc.vpc.id
+  vpc_id = module.vpc.vpc_id
 
   ingress {
     description     = "HTTP"

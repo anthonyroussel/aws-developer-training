@@ -21,3 +21,7 @@ resource "aws_internet_gateway" "nat_gateway" {
     Name = "Udemy LBL NAT Gateway"
   }
 }
+
+output "vpc_id" {
+  value = aws_vpc.vpc.id
+}
