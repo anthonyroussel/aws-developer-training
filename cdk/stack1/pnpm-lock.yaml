@@ -1,9 +1,13 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   aws-cdk-lib:
-    specifier: 2.73.0
-    version: 2.73.0(constructs@10.0.0)
+    specifier: 2.80.0
+    version: 2.80.0(constructs@10.0.0)
   constructs:
     specifier: ^10.0.0
     version: 10.0.0
@@ -44,16 +48,16 @@ packages:
       '@jridgewell/trace-mapping': 0.3.18
     dev: true
 
-  /@aws-cdk/asset-awscli-v1@2.2.132:
-    resolution: {integrity: sha512-TIhdwrp8uxxZDAY/oB7tPKtDJJPNO14hzdm436WGm68LKne2Q4d0t+ZDP0DcNM9+ppWP0NNjtcICLiy6UqM5KQ==}
+  /@aws-cdk/asset-awscli-v1@2.2.200:
+    resolution: {integrity: sha512-Kf5J8DfJK4wZFWT2Myca0lhwke7LwHcHBo+4TvWOGJrFVVKVuuiLCkzPPRBQQVDj0Vtn2NBokZAz8pfMpAqAKg==}
     dev: false
 
   /@aws-cdk/asset-kubectl-v20@2.1.1:
     resolution: {integrity: sha512-U1ntiX8XiMRRRH5J1IdC+1t5CE89015cwyt5U63Cpk0GnMlN5+h9WsWMlKlPXZR4rdq/m806JRlBMRpBUB2Dhw==}
     dev: false
 
-  /@aws-cdk/asset-node-proxy-agent-v5@2.0.108:
-    resolution: {integrity: sha512-RR9M5LveGoOTqkzqhNTNe5Zb9XEIdyhOHS033V/rellvBRtnAcdwj4OxOVbLfojzwFeFjKwa1DA2+6r8zJroUg==}
+  /@aws-cdk/asset-node-proxy-agent-v5@2.0.166:
+    resolution: {integrity: sha512-j0xnccpUQHXJKPgCwQcGGNu4lRiC1PptYfdxBIH1L4dRK91iBxtSQHESRQX+yB47oGLaF/WfNN/aF3WXwlhikg==}
     dev: false
 
   /@babel/code-frame@7.21.4:
@@ -843,15 +847,15 @@ packages:
       sprintf-js: 1.0.3
     dev: true
 
-  /aws-cdk-lib@2.73.0(constructs@10.0.0):
-    resolution: {integrity: sha512-r9CUe3R7EThr9U0Eb7kQCK4Ee34TDeMH+bonvGD9rNRRTYDauvAgNCsx4DZYYksPrXLRzWjzVbuXAHaDDzWt+A==}
+  /aws-cdk-lib@2.80.0(constructs@10.0.0):
+    resolution: {integrity: sha512-PoqD3Yms5I0ajuTi071nTW/hpkH3XsdyZzn5gYsPv0qD7mqP3h6Qr+6RiGx+yQ1KcVFyxWdX15uK+DsC0KwvcQ==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       constructs: ^10.0.0
     dependencies:
-      '@aws-cdk/asset-awscli-v1': 2.2.132
+      '@aws-cdk/asset-awscli-v1': 2.2.200
       '@aws-cdk/asset-kubectl-v20': 2.1.1
-      '@aws-cdk/asset-node-proxy-agent-v5': 2.0.108
+      '@aws-cdk/asset-node-proxy-agent-v5': 2.0.166
       constructs: 10.0.0
     dev: false
     bundledDependencies:
@@ -1088,6 +1092,7 @@ packages:
     resolution: {integrity: sha512-MIwjmrXZpM9RtwyrSD4HotDIQl8HTdIefQhU+MU1asvtSyVN3kK8kjeUOWMFb+fdyT4RX3QvvcaaPBluLEX1SA==}
     engines: {node: '>= 10.17.0'}
     dev: false
+    bundledDependencies: []
 
   /convert-source-map@1.9.0:
     resolution: {integrity: sha512-ASFBup0Mz1uyiIjANan1jzLQami9z1PoYSZCiiYW2FczPbenXc45FZdBZLzOT+r6+iciuEModtmCti+hjaAk0A==}
